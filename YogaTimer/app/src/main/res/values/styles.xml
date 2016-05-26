@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+		<item name="colorAccent">
+			#000
+		</item>
 	</style>
+	
 </resources>

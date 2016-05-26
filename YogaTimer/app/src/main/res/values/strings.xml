@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">YogaTimer</string>
+	<string name="session_header">Yoga Timer: Sessions</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>
