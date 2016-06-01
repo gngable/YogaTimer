@@ -180,6 +180,8 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
 		for (int i = 0; i < vg.getChildCount(); i++){
 			if (vg.getChildAt(i) instanceof TextView && !(vg.getChildAt(i) instanceof Button)){
 				InfoPop(((TextView)vg.getChildAt(i)).getText().toString());
+				Intent intent = new Intent(this, EditSessionActivity.class);
+				startActivity(intent);
 			}
 		}
 	}
