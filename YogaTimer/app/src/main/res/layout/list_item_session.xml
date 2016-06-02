@@ -4,11 +4,11 @@
     android:orientation="horizontal">
 	
 	<Button
-		android:id="@+id/list_item_sessionEditButton"
+		android:id="@+id/list_item_sessionDeleteButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:onClick="editClick"
-		android:text="Edit"
+		android:onClick="deleteClick"
+		android:text="delete"
 	/>
 	
     <TextView
@@ -16,15 +16,18 @@
 		android:layout_height="match_parent"
 		android:layout_width="wrap_content"
 		android:layout_weight="1"
+		android:onClick="editClick"
 		android:text="session"
 		/>
 	
+	
+	
 	<Button
-		android:id="@+id/list_item_sessionDeleteButton"
+		android:id="@+id/list_item_sessionStartButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:onClick="deleteClick"
-		android:text="delete"
-		/>
+		android:onClick="startClick"
+		android:text="Start"
+	/>
 	
 </LinearLayout>

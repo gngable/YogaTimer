@@ -44,6 +44,7 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sessions);
 		loadSessions();
+		setActiveSession(null);
     }
 
 	public void addSession(View view)
@@ -96,7 +97,7 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
 	private Set<String> getSessions()
 	{
 		SharedPreferences preferences = getApplicationContext().getSharedPreferences(GlobalsAndStatics.PREFNAME, Context.MODE_PRIVATE);
-		return preferences.getStringSet("sessions", new HashSet<String>());
+		return preferences.getStringSet(GlobalsAndStatics.SESSION_LIST, new HashSet<String>());
 	}
 
 	private void saveSessions(Set<String> sessions)
@@ -104,7 +105,17 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
 		SharedPreferences preferences = getApplicationContext().getSharedPreferences(GlobalsAndStatics.PREFNAME, Context.MODE_PRIVATE);
 		SharedPreferences.Editor ed = preferences.edit();
 
-		ed.putStringSet("sessions", sessions);
+		ed.putStringSet(GlobalsAndStatics.SESSION_LIST, sessions);
+
+		ed.commit();
+	}
+	
+	private void setActiveSession(String session)
+	{
+		SharedPreferences preferences = getApplicationContext().getSharedPreferences(GlobalsAndStatics.PREFNAME, Context.MODE_PRIVATE);
+		SharedPreferences.Editor ed = preferences.edit();
+
+		ed.putString(GlobalsAndStatics.ACTIVE_SESSION, session);
 
 		ed.commit();
 	}
@@ -121,25 +132,8 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
 
 		if (sessions.isEmpty()) return;
 
-		//String[] arr = new String[sessions.size()];
-
-		//for (String session : sessions){
-		//lv.addView(getSessionView(session));
-
-		//}
-
 		ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this, R.layout.list_item_session, R.id.list_item_sessionLabel, sessions.toArray(new String[sessions.size()]));
 		lv.setAdapter(modeAdapter);
-//		lv.setOnItemClickListener(new OnItemClickListener(){
-//
-//				@Override
-//				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
-//				{
-//					InfoPop("int = " + p3 + " long = " + p4);
-//				}
-//
-//				
-//			});
 	}
 
 	public void InfoPop(String text)
@@ -179,9 +173,23 @@ public class SessionsActivity extends Activity implements SingleLineDialog.Singl
 
 		for (int i = 0; i < vg.getChildCount(); i++){
 			if (vg.getChildAt(i) instanceof TextView && !(vg.getChildAt(i) instanceof Button)){
-				InfoPop(((TextView)vg.getChildAt(i)).getText().toString());
+				setActiveSession(((TextView)vg.getChildAt(i)).getText().toString());
 				Intent intent = new Intent(this, EditSessionActivity.class);
 				startActivity(intent);
+				break;
+			}
+		}
+	}
+	
+	public void startClick(View view){
+		ViewGroup vg = (ViewGroup)view.getParent();
+
+		for (int i = 0; i < vg.getChildCount(); i++){
+			if (vg.getChildAt(i) instanceof TextView && !(vg.getChildAt(i) instanceof Button)){
+				setActiveSession(((TextView)vg.getChildAt(i)).getText().toString());
+				Intent intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
+				break;
 			}
 		}
 	}
