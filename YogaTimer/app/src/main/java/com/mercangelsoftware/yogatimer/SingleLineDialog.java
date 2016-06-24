@@ -62,6 +62,10 @@ public class SingleLineDialog extends DialogFragment
     }
 
     SingleLineDialogListener listener;
+	
+	public void addListener(SingleLineDialogListener listener){
+		this.listener = listener;
+	}
 
     @Override
     public void onAttach(Activity activity){

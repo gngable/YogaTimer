@@ -24,8 +24,9 @@
 		
 		<TextView
 			android:id="@+id/warmup"
-			android:text="warmup"
-			android:layout_width="wrap_content"
+			android:text="Warm up for 0:00"
+			android:onClick="warmupClick"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 		/>
 		
@@ -45,8 +46,9 @@
 
 		<TextView
 			android:id="@+id/repeat"
-			android:text="repeat"
-			android:layout_width="wrap_content"
+			android:text="Repeat 0 times"
+			android:onClick="repeatClick"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 		/>
 
@@ -61,7 +63,7 @@
 	
 	<ListView
 		android:id="@+id/session_contents_list"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
 	/>
@@ -80,8 +82,9 @@
 
 		<TextView
 			android:id="@+id/cooldown"
-			android:text="cooldown"
-			android:layout_width="wrap_content"
+			android:text="Cool down for 0:00"
+			android:onClick="cooldownClick"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 		/>
 

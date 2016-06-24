@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+	
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:text="delete"
+		/>
+    
+	<TextView
+		android:id="@+id/li_activity_name"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:text="activity"
+		/>
+	
+	<TextView
+		android:id="@+id/li_activity_time"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:text="0:00"
+	/>
+	
+</LinearLayout>
